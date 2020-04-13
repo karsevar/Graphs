@@ -210,7 +210,30 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        # create a recursion helper function that will take a visited set()
+        # argument and the current_node
+            # if the current_node is not in visited
+                # if current_node equals destination_vertex return current_node
+                # wrapped in an array
+                # else:
+                    # loop through the neighbors of the current_node and 
+                    # recursively call the helper function on each neighbor 
+                    # return the path 
+
+        def dfs_helper(node, visited=set()):
+            if node not in visited:
+                visited.add(node) 
+                
+                if node == destination_vertex:
+                    return [node] 
+                else:
+                    for neighbor in self.get_neighbors(node):
+                        path = dfs_helper(neighbor, visited)
+                        if path is not None:
+                            # print('node', node, 'path', path)
+                            return [node] + path
+
+        return dfs_helper(starting_vertex)
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
