@@ -67,7 +67,32 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # create a stack 
+        # initialize the stack with the starting_vertex wrapped in an array 
+        # create visited set()
+
+        # while stack is not empty 
+            # pop head of the stack 
+            # check if last value in the popped array is in visited:
+                # add popped vertex to visited
+                # if not loop through the vertexes neighbors
+                    # add all neighbors to the stack
+
+        stack = Stack()
+        stack.push([starting_vertex])
+        visited = set()
+
+        while stack.size() > 0:
+            path = stack.pop()
+
+            if path[-1] not in visited:
+                visited.add(path[-1])
+                print(path[-1])
+
+                for neighbor in self.get_neighbors(path[-1]):
+                    new_path = list(path)
+                    new_path.append(neighbor)
+                    stack.push(new_path)
 
     def dft_recursive(self, starting_vertex):
         """
@@ -76,7 +101,25 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        
+        # create a recursion helper function that will take a visited 
+        # array argument and a vertex argument 
+            # if node not in visited
+                # add node to visited array 
+
+                # loop through the neighbors of the vertex 
+                    # recursively call the recursion helper function on 
+                    # each neighbor 
+
+        def dft_helper(node, visited=set()):
+            if node not in visited:
+                visited.add(node)
+                print(node)
+
+                for neighbor in self.get_neighbors(node):
+                    dft_helper(neighbor, visited)
+
+        dft_helper(starting_vertex)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
