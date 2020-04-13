@@ -28,13 +28,38 @@ class Graph:
         """
         Get all neighbors (edges) of a vertex.
         """
-        return self.vertices[vertex_id]
+        if vertex_id in self.vertices:
+            return self.vertices[vertex_id]
+        else:
+            return None
+            # might want to raise an exception here instead
 
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
+        # create a q and enqueue starting vertex 
+        qq = Queue()
+        qq.enqueue([starting_vertex])
+        # create a set of traversed vertices 
+        visited = set()
+        # while queue is not empty:
+        while qq.size() > 0:
+            # dequeue the first vertex 
+            path = qq.dequeue()
+            # if not visited
+            if path[-1] not in visited:
+                # do the thing!!!
+                print(path[-1])
+                # add vertex to visited 
+                visited.add(path[-1])
+                # enqueue all neighbors 
+                for neighbor in self.get_neighbors(path[-1]):
+                    new_path = list(path)
+                    new_path.append(neighbor)
+                    qq.enqueue(new_path)
+
         pass  # TODO
 
     def dft(self, starting_vertex):
