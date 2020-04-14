@@ -110,8 +110,8 @@ class Graph:
                 # loop through the neighbors of the vertex 
                     # recursively call the recursion helper function on 
                     # each neighbor 
-
-        def dft_helper(node, visited=set()):
+        visited = set()
+        def dft_helper(node, visited):
             if node not in visited:
                 visited.add(node)
                 print(node)
@@ -119,7 +119,7 @@ class Graph:
                 for neighbor in self.get_neighbors(node):
                     dft_helper(neighbor, visited)
 
-        dft_helper(starting_vertex)
+        dft_helper(starting_vertex, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -219,8 +219,8 @@ class Graph:
                     # loop through the neighbors of the current_node and 
                     # recursively call the helper function on each neighbor 
                     # return the path 
-
-        def dfs_helper(node, visited=set()):
+        visited = set()
+        def dfs_helper(node, visited):
             if node not in visited:
                 visited.add(node) 
                 
@@ -233,7 +233,7 @@ class Graph:
                             # print('node', node, 'path', path)
                             return [node] + path
 
-        return dfs_helper(starting_vertex)
+        return dfs_helper(starting_vertex, visited)
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph

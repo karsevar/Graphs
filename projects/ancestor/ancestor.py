@@ -12,6 +12,7 @@ class Queue():
     def size(self):
         return len(self.queue)
 
+
 def earliest_ancestor(ancestors, starting_node):
     
     # first create the graph in which the relationships 
